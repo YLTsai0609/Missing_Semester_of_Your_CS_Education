@@ -2,9 +2,17 @@
 * MIT短期課程，轉職CS必修課!
 * [連載Blog from someone](https://blog.gslin.org/archives/2020/02/15/9408/mit-%E7%9A%84%E3%80%8Cthe-missing-semester-of-your-cs-education%E3%80%8D/)
 * [知名Facebook粉專 - Learning By Hacking轉發，170+分享](https://www.facebook.com/datasci.info/photos/a.379757428885161/1217568378437391/?type=3&theater)
+* 來自Hacker News上的網友回應:
+```
+Sure, some stuff you learn in CS can make you a better software engineer. CS cannot make you a software engineer.
+
+CS can definitely not make you adept at using computers and neither should it. That’s something earlier education institutions must tackle.
+
+It’s always good to have optional courses for various topics of interest. _Requiring_ students to learn, say, MS Office (I had to), is just plain ridiculous.
+```
 * 11堂課大部分圍繞在Command line enviroment，working on remote machine, version control, finding files, Text Editing, data wrangling and security!
 * 去年課程**Hacker Tools**更包含了Vitual Machine and Containers, Backups, Automation, OS Customization, and Remote Machine!
-* https://missing.csail.mit.edu/?fbclid=IwAR2qc-p56sO7I4XDE3Bmc09TLEZ0lWvDrrOOHWkTPWbfqD0X5KsXghuiXz4
+* [Check the WebPage](https://missing.csail.mit.edu/?fbclid=IwAR2qc-p56sO7I4XDE3Bmc09TLEZ0lWvDrrOOHWkTPWbfqD0X5KsXghuiXz4)
 
 # Schedule
 
