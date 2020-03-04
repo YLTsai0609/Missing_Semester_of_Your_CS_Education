@@ -48,3 +48,8 @@ These topics are not taught as part of the university curriculum: students are n
 
 # More About MIT
 [麻省到底是哪個省，麻省理工到底有多強](https://kknews.cc/zh-tw/history/zgkbr93.html)
+
+# 其他參考資源
+
+* [跟著阿明學Linux - 實體書](https://www.books.com.tw/products/0010796234)
+* [鳥哥的 Linux 私房菜 - Linux基礎訓練](http://linux.vbird.org/linux_basic_train/)
