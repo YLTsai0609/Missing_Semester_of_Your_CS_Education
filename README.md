@@ -1,5 +1,5 @@
 # The Missing Semester of Your CS Education
-* MIT短期課程，轉職CS必修課!
+* MIT(麻省理工學院)短期課程，轉職CS必修課!
 * [連載Blog from someone](https://blog.gslin.org/archives/2020/02/15/9408/mit-%E7%9A%84%E3%80%8Cthe-missing-semester-of-your-cs-education%E3%80%8D/)
 * [知名Facebook粉專 - Learning By Hacking轉發，170+分享](https://www.facebook.com/datasci.info/photos/a.379757428885161/1217568378437391/?type=3&theater)
 * 來自Hacker News上的網友回應:
@@ -45,3 +45,6 @@ During a traditional Computer Science education, chances are you will take plent
 Over the years, we have helped teach several classes at MIT, and over and over we have seen that many students have limited knowledge of the tools available to them. Computers were built to automate manual tasks, yet students often perform repetitive tasks by hand or fail to take full advantage of powerful tools such as version control and text editors. In the best case, this results in inefficiencies and wasted time; in the worst case, it results in issues like data loss or inability to complete certain tasks.
 
 These topics are not taught as part of the university curriculum: students are never shown how to use these tools, or at least not how to use them efficiently, and thus waste time and effort on tasks that should be simple. The standard CS curriculum is missing critical topics about the computing ecosystem that could make students’ lives significantly easier.
+
+# More About MIT
+[麻省到底是哪個省，麻省理工到底有多強](https://kknews.cc/zh-tw/history/zgkbr93.html)

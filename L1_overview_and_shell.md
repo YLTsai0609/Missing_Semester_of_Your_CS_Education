@@ -12,7 +12,7 @@ missing :~$
 3. $ -> 你不是root使用者
 
 ## echo
-`echo hello`會print出hello，`echo`會把後面的argument用空切開然後print出來
+`echo hello`會print出hello，`echo`會把後面的argument用空格切開然後print出來
 1. `echo` My Photos
 
 ## Bash Shell
@@ -36,7 +36,7 @@ missing:~$ /bin/echo $PATH
 上式中，echo包含在`/usr/bin/`裡面，所以可以被找到，如果沒有在環境變數中，那麼就必須`/bin/echo $PATH`
 
 ## Shell中幾個常見用法
-1. 分隔符 Linux/macOS : `/`, Windows: '\'
+1. 分隔符 Linux/macOS : `/`, Windows: '\\'
 2. 從`/`，`~`的就是絕對路徑，其他的都是相對路徑
 3. `../..`是可以被使用的
 
