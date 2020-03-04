@@ -18,8 +18,8 @@ missing :~$
 ## Bash Shell
 * Bash和Python，Ruby一樣，是一個程式語言，所以就會有variable, conditionals, loops, functions，而bash shell基本上就是ipython的感覺，可以直接互動式產生結果
 
-## 環境變數
-存在`$PATH`中的可以叫，不然就要把它找出來用，像是下面這樣
+## 環境變數(Enviroment Variable)
+存在`$PATH`中的可以呼叫，不然就要把它找出來用，像是下面這樣
 
 ```
 missing:~$ echo $PATH
@@ -77,21 +77,37 @@ missing:~$ ls -l /home
 drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing
 
 ```
-## authority
+## Permissions
 依序解釋`drwx-xr-x`
 
 `d` : `missing` 是一個資料夾(directory)
-`rwxr-xr-x` : 這三個符號表示了目前owner對於`missing`的權限 :  9個digits拆成3個一組，個別代表了3個部分的使用者權限
-    * 分別為(rwx)(r-x)(r-x) (檔案所有者)(使用者群組)(其他使用者)
-    * r : read 可讀, w : write 可寫, x : excute 可執行, - : 不可
-    * 所以`rwxr-xr-x` : 檔案擁有者 : 可讀可寫可執行, 使用者群組 : 可讀不可寫可執行, 其他使用者 : 可讀不可寫可執行
+
+    `rwxr-xr-x` : 這三個符號表示了目前owner對於`missing`的權限 :  9個digits拆成3個一組，個別代表了3個部分的使用者權限
+
+    分別為(rwx)(r-x)(r-x) (檔案所有者)(使用者群組)(其他使用者)
+
+    r : read 可讀, w : write 可寫, x : excute 可執行, - : 不可以!
+
+所以`rwxr-xr-x` : 
+
+檔案擁有者 : 可讀可寫可執行
+
+使用者群組 : 可讀不可寫可執行
+
+其他使用者 : 可讀不可寫可執行
 
 再來繼續解釋`1 missing  users  4096 Jun 15  2019 missing`
+
 `1` : 佔用的節點(inode)數量，如果剛檔案是目錄，那這個數值與該目錄下的子目錄數量有關
+
 `missing` : 該檔案的所有者(可能是當前使用者，也可能不是)
+
 `users` : 該檔案的所屬群組
+
 `4096` : 該檔案的大小
+
 `4096 Jun 15  2019` : 該檔案最後一次被修改的時間(modified time)，依序為`月份`，`日期`，`時間`
+
 `missing` : 檔名
 
 # mv, cp, mkdir
