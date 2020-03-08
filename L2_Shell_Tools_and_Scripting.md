@@ -96,3 +96,48 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 ```
 
 * 通常都會使用pattern，就是上面的Globbing，所以可以多了解這個部分
+* `fd`是一個比`find`更使用者友善的指令集，像是他的ouptut會有顏色，預設只用正則表達式，support unicode(可以搜尋中文)，以及其他指令更為直覺等
+* 大部分的會同意`find`以及`fd`是好東西，但是他們有時候效能不太好，這時候可以查一下`locate`的使用，`locate`，關於`locate`的更多解釋可以看[這裡](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)
+
+## 程式碼查找
+* `grep`可以幫助你這個忙，在`data wrangling`我們會講更多
+
+* `grep`非常多才多藝(versatile)，講師常用的包含參數包含`-c`(算有幾個)，`-v`沒有match pattern的(inverting match)，`-R`，不只在當層，還往更深處找(Recursively)
+https://missing.csail.mit.edu/2020/shell-tools/
+
+* `grep -R`可以用非常多方式改進，像是排除`.git`，多cpu查找等
+
+* 以下指令需要下載一些新的指令激，像是`ack`, `ag`, `rg`，這些指令集都非常好用，有需要的話可以使用
+```
+# Find all python files where I used the requests library
+rg -t py 'import requests'
+# Find all files (including hidden files) without a shebang line
+rg -u --files-without-match "^#!"
+# Find all matches of foo and print the following 5 lines
+rg foo -A 5
+# Print statistics of matches (# of matched lines and files )
+rg --stats PATTERN
+```
+
+
+## 找尋shell commands
+* `histroy`
+搭配一下想找的指令，`history | grep find`
+* 另一個很酷的東西，講師自己非常喜歡的則是`history-based autosuggestions`，首先介紹一下[`fish`](https://fishshell.com/) shell, [fish-shell github](https://github.com/fish-shell/fish-shell)，這個東西可以在你的[zsh](https://asciinema.org/a/37390)中
+* 其中一點要注意的是，這樣的工具會紀錄你輸入過的東西，所以像是一些敏感資訊，要把它們拿掉，這可以從`.bash_history`或是`.zhistory`中調整
+
+
+## 資料夾導航
+* 可以透過`ln -s`
+* pass
+* pass
+* pass
+* pass
+
+
+
+
+
+
+
+https://medium.com/starrocket/https-medium-com-starrocket-interview-with-mosky-e7c18b54545
