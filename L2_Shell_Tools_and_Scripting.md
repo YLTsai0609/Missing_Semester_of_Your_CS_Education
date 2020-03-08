@@ -128,16 +128,11 @@ rg --stats PATTERN
 
 
 ## 資料夾導航
-* 可以透過`ln -s`
-* pass
-* pass
-* pass
-* pass
+* 可以透過`ln -s`，快速連結到某個資料夾，但是必須在該檔案中設定一個檔案，並對其更改權限
+* 直接列出資料夾結構 `tree`,`broot`
+* 非常優秀的檔案管理`nnn`, `ranfger`
 
+## Exercise
+* took 90 mins
 
-
-
-
-
-
-https://medium.com/starrocket/https-medium-com-starrocket-interview-with-mosky-e7c18b54545
+https://missing.csail.mit.edu/2020/shell-tools/
