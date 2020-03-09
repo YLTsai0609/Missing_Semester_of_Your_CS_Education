@@ -46,6 +46,11 @@ Over the years, we have helped teach several classes at MIT, and over and over w
 
 These topics are not taught as part of the university curriculum: students are never shown how to use these tools, or at least not how to use them efficiently, and thus waste time and effort on tasks that should be simple. The standard CS curriculum is missing critical topics about the computing ecosystem that could make students’ lives significantly easier.
 
+# Update your Bash
+在我的Mac上，bash版本是3.x版，2007年出的，主要需要更新的原因是vscode的Bash Debug extension，只支持4.0以上的版本
+
+`brew install bash`
+
 # More About MIT
 [麻省到底是哪個省，麻省理工到底有多強](https://kknews.cc/zh-tw/history/zgkbr93.html)
 

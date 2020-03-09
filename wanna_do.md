@@ -4,4 +4,7 @@
    * 了解bash是取用哪個變數來顯示
    * 怎麼縮短
    * 怎麼找到當前縮短的值?
-3. 能否寫個bash，輸入當前的abc_2.png，那把桌面上所有`螢幕截圖 日期`，排序，然後依序命名成`abc_3.png`, `abc_4.png`, `abc_5.png`, ...
+
+3. 搞定brew權限，然後升級bash，版本太舊 vscode debugger 不支援
+# complete
+1. [最後使用了Python...]能否寫個bash，輸入當前的abc_2.png，那把桌面上所有`螢幕截圖 日期`，排序，然後依序命名成`abc_3.png`, `abc_4.png`, `abc_5.png`, ... 
