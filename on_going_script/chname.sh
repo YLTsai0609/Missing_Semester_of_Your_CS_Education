@@ -21,3 +21,14 @@ for file in $(ls -rt ~/Desktop/螢幕快照*.png)
 do 
     echo "calling $file"
 done
+
+# might a good options
+# from https://stackoverflow.com/questions/7314044/use-bash-to-read-line-by-line-and-keep-space?fbclid=IwAR01rQleniGX3xZaJV43J8kyHodgRtQ8DcJNBACYwza51MmxZUO7BDC-c4k
+
+# ls -rt ~/Desktop/螢幕快照*.png > tmp
+
+# cat tmp | while read data
+# do
+#     echo "$data"
+# done
+
