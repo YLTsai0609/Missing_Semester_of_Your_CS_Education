@@ -93,7 +93,7 @@ Vim會維護一塊開啟的檔案，稱作buffers，一個vim session會有幾�
 * `i` : insert
 * `o/O` : 向下插入一行，向上插入一行
 * `d` : delete, 刪除是一個組合技，`dw`刪除字, `db`刪除前一個字, `de`到該字的最後, `dd`刪除一行，`d0`刪除到頭，`d$`刪除到尾
-* `u` : undo
+* `u` : undo，注意，一旦save檔案之後就不能undo了。
 * `ctrl + R` redo
 * `c` : change, 改字，也是一個組合技，跟`d`一樣，他會做到刪除，然後幫你進入到insert mode，非常常用，`cc`會刪掉這行然後進入insert mode
 * `x` : 刪除單個字元(和`dl`一樣)
@@ -128,7 +128,12 @@ Vim會維護一塊開啟的檔案，稱作buffers，一個vim session會有幾�
 3. .可以重複貼上上一個命令
 
 # Costum Vim
-[TODO 42, 48](https://missing.csail.mit.edu/2020/editors/)
+課堂提供了`vimrc`讓我們當作start point。
+[TODO 40:00 ](https://missing.csail.mit.edu/2020/editors/)
+
+# Extending Vim
+
+# Some Advanced functionality
 
 # additinal matirials
 [Why I love Vim: It’s the lesser-known features that make it so amazing](https://www.freecodecamp.org/news/learn-linux-vim-basic-features-19134461ab85/)
