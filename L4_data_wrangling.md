@@ -1,7 +1,7 @@
 # L4 Data Wrangling
-你曾經想要將資料從一個類型轉換成另一個不同的類型嗎? 妳一訂有的，而且這件事還非常常發生，這就是這堂課想要教的，這堂課會講特別多，不管是文字資料還是二進位資料!
+你曾經想要將資料從一個類型轉換成另一個不同的類型嗎? 你一定有的，而且這件事還非常常發生，這就是這堂課想要教的，這堂課會講特別多，不管是文字資料還是二進位資料!
 
-我們已經有做過一些簡單的資料整理，通常你有用到pipe `|`的時候就是在做某些資料處理，不過這邊我們做更細節的介紹
+我們已經有做過一些簡單的資料整理，通常你有用到pipe `|` 的時候就是在做某些資料處理，不過這邊我們做更細節的介紹
 
 我們馬上來看一個例子，我想知道誰登入了我的server，藉由觀看我server的log來得知
 
@@ -68,14 +68,34 @@ locate site-package | grep "python3.7" | sed -E 's/.*site-package//g' | sort | u
 ```
 
 ## `awk`
-* `awk`是另一個steam editor，`awk`是一個行操作，具有`sed`的所有功能，但是更為強大，其實也是一個程式語言XD，這個指令對於text stream的處理非常在行，現在我們學幾個常用的
+* `awk`是一個column based steam editor，`awk`是一個行操作，具有`sed`的所有功能，但是更為強大，其實也是一個程式語言XD，這個指令對於text stream的處理非常在行，現在我們學幾個常用的
 **pass this part**
 **back if needed**
 
 ## Other useful functionality (II)
 * `paste` 貼上，但是轉換一下格式，例如 `ls | paste - - -` : 用3行貼上
-* Do some math
-* woring with binary data
-* Exeicise
+* `bc` : caculator
+* `R` : 可以直接把terminal的東西用R計算統計分佈
+* `gnuplot` : 可以直接把terminal的東西用R畫圖
+* `xargs` : 把input變成arguments - 可以把東西列出來，然後讓程式去執行當作arguments
+* `tee` : 可以當作中介
+* [`convert`](https://www.howtogeek.com/109369/how-to-quickly-resize-convert-modify-images-from-the-linux-terminal/) : 可以作檔案類型轉換 "resize", "convert" and "modify" multiple images, mac上不好裝, ubuntu預設有
+  * 用convert做圖片的batch Processing應該會超快，例如 : 把所有png檔案轉90度，可以想像後面可以接上轉乘jpg, 灰階, 套用一些效果，然後壓縮，傳到遠端，可以用一行
+  * `for file in *.png; do convert $file -rotate 90 rotated-$file; done`
+* 同時也可以直接建立streamming `cat /dev/video0 ssh xxxxx`
 
-[TODO 3403](https://missing.csail.mit.edu/2020/data-wrangling/)
+## working with binary data
+* `ffmpeg` : encode and decode the video and operate on images
+
+* 從video0裝置抓取frame，轉成灰階, 壓縮, 然後傳到遠端機器上
+```
+ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
+ | convert - -colorspace gray -
+ | gzip
+ | ssh mymachine 'gzip -d | tee copy.jpg | env DISPLAY=:0 feh -'
+```
+
+## Exercise 
+
+[check](https://missing.csail.mit.edu/2020/data-wrangling/)
+* 可以透過`log show`來查看system log，最好先help一下，不然就只是terminal爆噴log
