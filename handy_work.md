@@ -8,4 +8,5 @@
 
 * open a terminal when using vi
   * on mac, you have iterm2, `cmd + D` or `cmd + shift + D`
-  * on ubuntu : 
+  * on ubuntu : tmux
+    * [intro](https://larrylu.blog/tmux-33a24e595fbc)

@@ -7,3 +7,7 @@
 # vscode setting
 /.vscode/*
 
+RandomlyMoveFileExp/label_template/
+RandomlyMoveFileExp/fold_alen/
+RandomlyMoveFileExp/fold_yulong/
+RandomlyMoveFileExp/fold_poshih/
