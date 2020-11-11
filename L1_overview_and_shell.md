@@ -258,19 +258,6 @@ The first line might be tricky to get working. It’s helpful to know that # sta
 
 # additinal matrials
 
-* 關於權限，from 跟阿銘學Linux
-
-``` 
-
-d : 目錄(directory)
-
-* : 一般檔案
-
-l : 連結檔(link file)
-b : 區塊設備(例如/dev/sda, /dev/video)
-c : 序列埠設備檔(又稱字元設備檔, 例如鍵盤，滑鼠，印表機，tty終端)
-s : 通訊端檔(socket，用於行程之間的溝通，講到MySQL時會用到這樣的檔案)
-```
 
 * 關於ls -l, 以前常用的ls -lh 可以display human understandable 的 檔案大小
 
