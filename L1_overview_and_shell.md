@@ -96,10 +96,15 @@ drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing
 依序解釋 `drwx-xr-x`
 
 `d` : `missing` 是一個資料夾(directory)，也可能會出現其他的
+
 `s` : `missing` 是一個socket通訊檔案
+
 `-` : `missing` 是一個一般檔案
+
 `l` : `missing` 是一個連結檔
+
 `b` : `missing` 是一個區塊設備(例如 `dev/sda` )
+
 `c` : `missing` 序列埠設備檔(例如鍵盤滑鼠印表機tty終端)
 ``
 
