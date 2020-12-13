@@ -6,6 +6,7 @@
 * 來自Hacker News上的網友回應:
 
 ``` 
+
 Sure, some stuff you learn in CS can make you a better software engineer. CS cannot make you a software engineer.
 
 CS can definitely not make you adept at using computers and neither should it. That’s something earlier education institutions must tackle.
@@ -19,28 +20,19 @@ It’s always good to have optional courses for various topics of interest. _Req
 
 # Schedule
 
-1/13: Course overview + the shell
-
-1/14: Shell Tools and Scripting
-
-1/15: Editors (Vim)
-
-1/16: Data Wrangling
-
-1/21: Command-line 
-Environment
-
-1/22: Version Control (Git)
-
-1/23: Debugging and Profiling
-
-1/27: Metaprogramming
-
-1/28: Security and Cryptography
-
-1/29: Potpourri
-
-1/30: Q&A
+| Section | Compelete | Note  |
+|---------|-----------|-------|
+| 1 Course overview + the shell  | 12/13, 20     |  |
+|2  Shell Tools and Scripting      |12/13, 20      ||
+|3 1/15: Editors (Vim)|12/13, 20||
+|4 1/16: Data Wrangling|12/13, 20||
+|5 1/21: Command-line Environment |12/13, 20||
+|6 1/22: Version Control (Git)|12/13, 20|
+|7 1/23: Debugging and Profiling |||
+|8 1/27: Metaprogramming|||
+|9 1/28: Security and Cryptography|||
+|10 1/29: Potpourri|||
+|1/30: Q&A|||
 
 # Why we are teaching this class
 
@@ -55,11 +47,24 @@ These topics are not taught as part of the university curriculum: students are n
 在我的Mac上，bash版本是3.x版，2007年出的，主要需要更新的原因是vscode的Bash Debug extension，只支持4.0以上的版本
 
  `brew install bash`
+
 # More About MIT
 
 [麻省到底是哪個省，麻省理工到底有多強](https://kknews.cc/zh-tw/history/zgkbr93.html)
+
+## Addtional Content
+
+Vim - tutorial
+
+| Section | Complete | Note  |
+|---------|----------|-------|
+| vi/vim editor L1   | conte    | conte |
 
 # 其他參考資源
 
 * [跟著阿明學Linux - 實體書](https://www.books.com.tw/products/0010796234)
 * [鳥哥的 Linux 私房菜 - Linux基礎訓練](http://linux.vbird.org/linux_basic_train/)
+* [Vim section of Coding Interview University](https://github.com/jwasham/coding-interview-university/blob/master/translations/README-tw.md#emacs-and-vim)
+* [Vim cheat sheet](https://vim.rtorr.com/lang/en_us)
+* [Vim分割視窗](https://2formosa.blogspot.com/2016/07/vim-split-window.html)
+* [Vim documentation](https://www.vim.org/docs.php)
