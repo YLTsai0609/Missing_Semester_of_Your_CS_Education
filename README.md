@@ -100,3 +100,4 @@ Incliuding:
 * [Vim cheat sheet](https://vim.rtorr.com/lang/en_us)
 * [Vim分割視窗](https://2formosa.blogspot.com/2016/07/vim-split-window.html)
 * [Vim documentation](https://www.vim.org/docs.php)
+* [modes in vim](https://irian.to/blogs/introduction-to-vim-modes/)
