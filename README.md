@@ -52,15 +52,47 @@ These topics are not taught as part of the university curriculum: students are n
 
 [麻省到底是哪個省，麻省理工到底有多強](https://kknews.cc/zh-tw/history/zgkbr93.html)
 
-## Addtional Content
+# Addtional Content
 
-Vim - tutorial
+## Vim - tutorial
 
-| Section | Complete | Note  |
+| Section and Content | Complete | Note  |
 |---------|----------|-------|
-| vi/vim editor L1   | conte    | conte |
+| L1 vi/vim modes in vim   | 12/13    | if you are not familar with vim, check L3 Editors Vim instead |
+| L2 navigation   | 12/13    | |
+| L3 inserting text   | 12/13    |  |
+| L4 deleteing text   | 12/13    |  |
+| Bonus vim wondows   |     | |
+| Bonus vim combinations   |     | |
+| Bonus vim search, find, and replace   |     | |
+| Bonus tmux   | 12/13    | |
+| Bonus tmux   | 12/18    | |
 
-# 其他參考資源
+## Handy Linux conmmand and concepts
+
+Incliuding:
+
+[handy_linux_command](additional/handy_linux_command.md)
+
+1. Network(ifconfig, socket, ping, nmap, scp, curl, fix ip and floating ip, loopback ip, iwconfig, dns, ssh)
+2. backup, packing, unpacking(dd, gzip, zip, unzip, tar)
+3. shell script(why we need shell script, if else, variables, env vsariables)
+04. alias unaluas
+05. history
+6. wildcard(bash萬用字元，和regax有點像)
+07. pipe, cut, grep
+8. data redirection(stdout, stderr, stdin, tee, :, &&)
+9. job control(nohup, ctrl + z, bg, fg, kill, wait)
+10. file profiling(cat, less, head, tail, echo)
+11. system profiling(top, htop, df -h, uname -a, w, whoami, free)
+12. find a file/directory(find, locate, whereis, which)
+13. package management(masOS(brew, flnk), Ubuntu, Debian(apt, dpkg), curl, wget)
+14. filesystem structure
+15. kernel management(ukuu)
+16. memory and device management(lscpu, nvidia-smi)
+17. command line short-cut
+
+# Reference
 
 * [跟著阿明學Linux - 實體書](https://www.books.com.tw/products/0010796234)
 * [鳥哥的 Linux 私房菜 - Linux基礎訓練](http://linux.vbird.org/linux_basic_train/)
