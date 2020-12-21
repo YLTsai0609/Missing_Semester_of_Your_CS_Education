@@ -1,5 +1,7 @@
 # The Missing Semester of Your CS Education
 
+* [Check the WebPage](https://missing.csail.mit.edu/?fbclid=IwAR2qc-p56sO7I4XDE3Bmc09TLEZ0lWvDrrOOHWkTPWbfqD0X5KsXghuiXz4)
+
 * MIT(麻省理工學院)短期課程，轉職CS必修課!
 * [連載Blog from someone](https://blog.gslin.org/archives/2020/02/15/9408/mit-%E7%9A%84%E3%80%8Cthe-missing-semester-of-your-cs-education%E3%80%8D/)
 * [知名Facebook粉專 - Learning By Hacking轉發，170+分享](https://www.facebook.com/datasci.info/photos/a.379757428885161/1217568378437391/?type=3&theater)
@@ -16,7 +18,6 @@ It’s always good to have optional courses for various topics of interest. _Req
 
 * 11堂課大部分圍繞在Command line enviroment，working on remote machine, version control, finding files, Text Editing, data wrangling and security!
 * 去年課程**Hacker Tools**更包含了Vitual Machine and Containers, Backups, Automation, OS Customization, and Remote Machine!
-* [Check the WebPage](https://missing.csail.mit.edu/?fbclid=IwAR2qc-p56sO7I4XDE3Bmc09TLEZ0lWvDrrOOHWkTPWbfqD0X5KsXghuiXz4)
 
 # Schedule
 
@@ -96,6 +97,7 @@ Incliuding:
 
 * [跟著阿明學Linux - 實體書](https://www.books.com.tw/products/0010796234)
 * [鳥哥的 Linux 私房菜 - Linux基礎訓練](http://linux.vbird.org/linux_basic_train/)
+* [鳥哥的 Linux 私房菜 第五章、 Linux 常用網路指令](http://linux.vbird.org/linux_server/0140networkcommand.php)
 * [Vim section of Coding Interview University](https://github.com/jwasham/coding-interview-university/blob/master/translations/README-tw.md#emacs-and-vim)
 * [Vim cheat sheet](https://vim.rtorr.com/lang/en_us)
 * [Vim分割視窗](https://2formosa.blogspot.com/2016/07/vim-split-window.html)

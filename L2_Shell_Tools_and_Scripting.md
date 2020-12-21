@@ -1,12 +1,59 @@
 # L2 Shell Tools and Scripting 
 
-前面幾個part不小心沒有留記錄而且被刪掉了，囧
+# Variables
 
-幾個重點
-
-1. 可以自己寫script
+在command line可以直接指定變數
 
 ``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ foo=bar
+(base) YuLong@MacBook-Pro:~/Desktop$ echo $foo
+bar
+```
+
+shell預設是空格即間隔，這和其他程式語言(例如Python)不太一樣，所以以下不會work
+
+``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ foo = bar
+-bash: foo: command not found
+```
+
+單引號和雙引號的字串格式都是被接受的
+
+``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ echo "HELLO"
+HELLO
+(base) YuLong@MacBook-Pro:~/Desktop$ echo 'abc'
+abc
+```
+
+但雙引號裡面是可以放變數的，如下，變數為 `$foo`
+
+單引號則為plain text(純文字格式)
+
+``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ echo "Value is $foo"
+Value is bar
+(base) YuLong@MacBook-Pro:~/Desktop$ echo 'Value is $foo'
+Value is $foo
+```
+
+# Functions
+
+shell也能夠有邏輯判斷，迴圈，函數等，以下示範函數
+
+``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ vi mch.sh
+```
+
+以下函數會吃一個positional argument，開新資料夾，並且將當前路徑進入到該資料夾中
+
+``` 
+
 mcd () {
     mkdir -p "$1"
     cd "$1"
@@ -14,12 +61,72 @@ mcd () {
 
 ```
 
-2.bash shell以空白做分割，所以中間不要有空白
+# Special Variables
 
-3. bash語言中很多特殊符號，可以參考[這裡](https://www.tldp.org/LDP/abs/html/special-chars.html)
-4. 一隻會查找給予的檔案(arguments)中有沒有包含`foobar`，沒有就會加進去到檔案最後一行的一隻script
+shell當中設計了不少特殊變數，像是 `$1, $2, $? $*, $@` ，可以參考[這裡](https://www.itread01.com/p/200789.html)，這使得sh檔案更輕便簡潔(也更難讀懂就是了....)，這和shell這門語言的設計理念有關係
+
+| special variable | meaning                             | note |
+|------------------|-------------------------------------|------|
+| `$0` | file name                           |      |
+| `$1` | first positional argument           |      |
+| `$2` ~ `$9` | second to ninth positional argument |      |
+| `$*` | all of the positional arguments     |      |
+| `$#` | number of arguments we gave to the program     |      |
+| `$$` | PID which processing the program    |      |
+| `$?` | lastest command succeed or not    |  successed -> 0    |
+
+# Special Command
+
+shell 設計了很多方便的command來幫助我們快速的和linux系統互動
+
+`!!` means lastest command, like you don't have a permission.
 
 ``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ vi /System/Volumes/Data/Users/Shared/macenhance/520974.padl
+
+permission denied
+
+(base) YuLong@MacBook-Pro:~/Desktop$ sudo !!
+sudo vi /System/Volumes/Data/Users/Shared/macenhance/520974.padl
+
+```
+
+`||` means or, if failed by first command, try second command.
+
+``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ false || echo "Oops failed"
+Oops failed
+```
+
+`&&` - only run the second command only the first command is successed.
+
+``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ false && echo "First command successed"
+(base) YuLong@MacBook-Pro:~/Desktop$ True && echo "First command successed"
+First command successed
+
+```
+
+`;` - always do the following command
+
+``` 
+
+(base) YuLong@MacBook-Pro:~/Desktop$ True ; echo "First command successed"
+First command successed
+(base) YuLong@MacBook-Pro:~/Desktop$ False ; echo "First command successed"
+First command successed
+
+```
+
+## Example Script
+
+1. 一隻會查找給予的檔案(arguments)中有沒有包含`foobar`，沒有就會加進去到檔案最後一行的一隻script
+
+``` 
+
 #!/bin/bash
 
 echo "Starting program at $(date)" # Date will be substituted
@@ -38,6 +145,7 @@ done
 ```
 
 5. 各種test 可以`man test`，在上面的script中是 `-ne` 表示 `!=`，test要用雙中括號包起來，例如`[[$? -ne 0]]`
+
 6. shell globbing，很類似正則表達式的匹配，但是更方便
 
    Wildcard - `ls *.py` , `rm foo*`
@@ -45,6 +153,9 @@ done
    Curly braces `{}` - 表示或, `ls *.{py,sh}`
 
 ``` 
+
+[19:16](https://www.youtube.com/watch?v=kgII-YWo3Zw&feature=emb_logo)
+
 convert image.{png,jpg}
 # Will expand to
 convert image.png image.jpg
@@ -88,6 +199,7 @@ diff <(ls foo) <(ls bar)
 * `find` 超級實用，以下給出幾個例子
 
 ``` 
+
 # Find all directories named src
 find . -name src -type d
 # Find all python files that have a folder named test in their path
@@ -102,6 +214,7 @@ find . -size +500k -size -10M -name '*.tar.gz'
 * `find` 可以同時搭配`exec`，找到之後搭配執行動作
 
 ``` 
+
 # Delete all files with .tmp extension
 find . -name '*.tmp' -exec rm {} \;
 # Find all PNG files and convert them to JPG
@@ -123,9 +236,10 @@ https://missing.csail.mit.edu/2020/shell-tools/
 
 * `grep -R`可以用非常多方式改進，像是排除`.git`，多cpu查找等
 
-* 以下指令需要下載一些新的指令激，像是`ack`,  `ag`,  `rg`，這些指令集都非常好用，有需要的話可以使用
+* 以下指令需要下載一些新的指令集，像是`ack`,                               `ag`,                               `rg`，這些指令集都非常好用，有需要的話可以使用
 
 ``` 
+
 # Find all python files where I used the requests library
 rg -t py 'import requests'
 # Find all files (including hidden files) without a shebang line
@@ -148,8 +262,8 @@ rg --stats PATTERN
 ## 資料夾導航
 
 * 可以透過`ln -s`，快速連結到某個資料夾，但是必須在該檔案中設定一個檔案，並對其更改權限
-* 直接列出資料夾結構 `tree`, `broot`
-* 非常優秀的檔案管理`nnn`,  `ranfger`
+* 直接列出資料夾結構 `tree`,                              `broot`
+* 非常優秀的檔案管理`nnn`,                               `ranfger`
 
 ## Exercise
 
@@ -158,7 +272,7 @@ rg --stats PATTERN
 * https://missing.csail.mit.edu/2020/shell-tools/
 1. `man ls`，然後用`ls`做到以下事情
   + Q : 列出檔案，包含隱藏的 
-  + A : `ls -a`,  `ls -A`
+  + A : `ls -a`,                               `ls -A`
   + Q : 包含檔案大小資訊，人獨得懂的
   + A : `ls -lh`
   + Q : 列出所有檔案(包含隱藏檔案)，但是是按照新舊順序排序
@@ -166,9 +280,9 @@ rg --stats PATTERN
   + A2 : bouns `ls -altr` : 加上反排序 `-r` : `reverse`
   + A3 : bonus man很長，關鍵是sort, 所以可以 `man ls | grep sort`來查找相關命令
   + Q : 讓輸出有顏色
-  + A : `ls -aG`，但是如果預設你的`.bashrc`,  `.bash_profile`ˇ經有設置，可能就沒差
+  + A : `ls -aG`，但是如果預設你的`.bashrc`,                               `.bash_profile`ˇ經有設置，可能就沒差
 
-2. 寫兩個bash function,  `marco` and `polo`
+2. 寫兩個bash function,                               `marco` and `polo`
 
    1. 執行 `marco` 時，會將當前的工作路徑存在某個地方
    2. 執行 `polo` 時，不管輸入什麼工作路徑，都要進入到 `marco` 儲存的工作路徑
@@ -177,6 +291,7 @@ rg --stats PATTERN
    A : 
 
 ``` 
+
    #!/bin/bash
 
     marco () {
@@ -197,6 +312,7 @@ rg --stats PATTERN
    
 
 ``` 
+
     #! /bin/bash
     # 此file會測試某個script，200次，並將output以及錯誤訊息寫到當前目錄中的curr.out
     for i in `seq 1 200`;
@@ -235,4 +351,4 @@ rg --stats PATTERN
 # additinal matrials
 
 1. shell腳本中的算術運算 - 跟著阿銘學linux，第12章，shell script
-2. [UPdate your bash to 5.0 in order to deubger support on VSCode 2.5k+](https://itnext.io/upgrading-bash-on-macos-7138bd1066ba)
+2. [Update your bash to 5.0 in order to deubger support on VSCode 2.5k+](https://itnext.io/upgrading-bash-on-macos-7138bd1066ba)

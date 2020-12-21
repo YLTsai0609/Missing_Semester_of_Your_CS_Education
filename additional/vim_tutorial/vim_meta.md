@@ -28,9 +28,3 @@ below is the following operation you want to do
 1. change(c), delete(d), yank(y)
 2. dedent(<), indent(>), command-line(:)
 3. multiple line insertion(using visual block) - use A/I to get insert mode
-
-dsv
-asxa
-asxasx
-asxasxc
-4. 
