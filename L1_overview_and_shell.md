@@ -25,6 +25,16 @@ missing :~$
 
 * Bash和Python，Ruby一樣，是一個程式語言，所以就會有variable, conditionals, loops, functions，而bash shell基本上就是ipython的感覺，可以直接互動式產生結果
 
+### 各種shell
+
+這段是補充資訊，其實shell就是一種程式語言，UNIX最初就是使用Shell，shell的全稱是(Bourne shell)
+
+但是處理使用者和系統的交互命令時開發更新的速度不夠快(a.k.a. 被嫌不夠好用)，之後就有了bash(Bourne Again Shell)，Linux OS默認，是Bourne Shell的擴展，完全兼容shell並且提供命令補全，命令編輯，命令歷史blablabla，可能因為Linux是開源的，然後又批哩啪拉多出一大堆shell，如下
+
+sh -> bash -> csh(C shell) -> Tcsh -> ksh(korn shell) -> pdksh 
+
+[check here](itdaan.com/tw/647a0e69f864)
+
 ## 環境變數(Enviroment Variable)
 
 存在 `$PATH` 中的可以呼叫，不然就要把它找出來用，像是下面這樣
@@ -148,7 +158,7 @@ drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing
 `cp` : copy
 `mkdir` : make a niew directory
 
-* 全部都可以 --help或是 `man mv` ,    `man cp` ,    `man mkdir` 查看怎麼用
+* 全部都可以 --help或是 `man mv` ,      `man cp` ,      `man mkdir` 查看怎麼用
 * man的意思是 manual page(手冊)
 
 # 關於重定向 (Connecting Program)
@@ -262,7 +272,6 @@ The first line might be tricky to get working. It’s helpful to know that # sta
    * ANS3 : 補充解釋 `./semester | grep "Date" | > last-modified.txt` 這樣是行不通的，因為最後的指令沒有input stream， `last-modified.txt` 裡面會是空的，gg。
 
 # additinal matrials
-
 
 * 關於ls -l, 以前常用的ls -lh 可以display human understandable 的 檔案大小
 

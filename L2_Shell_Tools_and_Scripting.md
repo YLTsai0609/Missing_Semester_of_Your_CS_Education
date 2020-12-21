@@ -236,7 +236,7 @@ https://missing.csail.mit.edu/2020/shell-tools/
 
 * `grep -R`可以用非常多方式改進，像是排除`.git`，多cpu查找等
 
-* 以下指令需要下載一些新的指令集，像是`ack`,                               `ag`,                               `rg`，這些指令集都非常好用，有需要的話可以使用
+* 以下指令需要下載一些新的指令集，像是`ack`,    `ag`,  `rg`，這些指令集都非常好用，有需要的話可以使用
 
 ``` 
 
@@ -262,8 +262,8 @@ rg --stats PATTERN
 ## 資料夾導航
 
 * 可以透過`ln -s`，快速連結到某個資料夾，但是必須在該檔案中設定一個檔案，並對其更改權限
-* 直接列出資料夾結構 `tree`,                              `broot`
-* 非常優秀的檔案管理`nnn`,                               `ranfger`
+* 直接列出資料夾結構 `tree`, `broot`
+* 非常優秀的檔案管理`nnn`,   `ranfger`
 
 ## Exercise
 
@@ -272,7 +272,7 @@ rg --stats PATTERN
 * https://missing.csail.mit.edu/2020/shell-tools/
 1. `man ls`，然後用`ls`做到以下事情
   + Q : 列出檔案，包含隱藏的 
-  + A : `ls -a`,                               `ls -A`
+  + A : `ls -a`,                                  `ls -A`
   + Q : 包含檔案大小資訊，人獨得懂的
   + A : `ls -lh`
   + Q : 列出所有檔案(包含隱藏檔案)，但是是按照新舊順序排序
@@ -280,9 +280,9 @@ rg --stats PATTERN
   + A2 : bouns `ls -altr` : 加上反排序 `-r` : `reverse`
   + A3 : bonus man很長，關鍵是sort, 所以可以 `man ls | grep sort`來查找相關命令
   + Q : 讓輸出有顏色
-  + A : `ls -aG`，但是如果預設你的`.bashrc`,                               `.bash_profile`ˇ經有設置，可能就沒差
+  + A : `ls -aG`，但是如果預設你的`.bashrc`,                                  `.bash_profile`ˇ經有設置，可能就沒差
 
-2. 寫兩個bash function,                               `marco` and `polo`
+2. 寫兩個bash function,                                  `marco` and `polo`
 
    1. 執行 `marco` 時，會將當前的工作路徑存在某個地方
    2. 執行 `polo` 時，不管輸入什麼工作路徑，都要進入到 `marco` 儲存的工作路徑
