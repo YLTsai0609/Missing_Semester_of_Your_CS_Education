@@ -147,7 +147,7 @@ echo "I don't know what your choice is" && exit 0
 
 <img src = './images/bash_pipe_1.png'></img>
 
-* 在每個管線後面接的第一個資料必定是**命令**才行，例如 `less` `more` `head` `tail` 等都是可以接受 standrar input，至於`ls`,   `cp`,   `mv`就不是管線命令了，因為後面這3個命令並不會接受 stdin的資料
+* 在每個管線後面接的第一個資料必定是**命令**才行，例如 `less` `more` `head` `tail` 等都是可以接受 standrar input，至於`ls`,     `cp`,     `mv`就不是管線命令了，因為後面這3個命令並不會接受 stdin的資料
 * 管線命令僅會處理 standard output，對於 standard error output 會予以忽略
 * 管線命令必須要能夠接受來自前一個指令的資料成為 standard input 繼續處理才行。
 
@@ -301,17 +301,6 @@ linux命令是由左至右的，所以 `&&` 和 `||` 的位置不要放反喔!
 
 * 什麼是`swap` : 硬體加速，當記憶體滿載時，會從硬碟中借一些容量拿充當記憶體，常用的話，很傷記憶體
 
-# 檔案查找
-
-|命令|使用場景|備註|
-|---|-------|---|
-|locate|找檔案|幾分鐘，幾個小時前的會找不到，located會找到很多，會搜尋整個檔案系統，搜尋的db一天更新一次|
-|whereis|找二進位檔，回傳兩個結果，二進位檔以及操作手冊位置|不會回傳所有帶有關鍵字的檔案，不會很雜，但是重點是要知道你要找的是二進位檔|
-|which|一樣找二進位檔，只是會在PATH variable中尋找||
-|find|最萬用的進階搜尋|如果不知道搜尋根目錄的話，會挺慢的，要等一會|
-
-`find path -type f/d -name "xxx.sh"` , 支援萬用字元和正則表達式
-
 # 軟體管理
 
 |OS|中介軟體(下載軟體用的軟體)|備註|
@@ -321,7 +310,7 @@ linux命令是由左至右的，所以 `&&` 和 `||` 的位置不要放反喔!
 |?|curl|curl有Library的版本，程式可以利用curl當作HTTP Client使用，支援比較多網路協定，支援的作業系統比wget多|
 |?|wget|最方便的一點，wget可以遞迴下載檔案，把子資料夾跟子子資料夾都下載，wget較為直覺|
 
-* [fink mimic `apt`,   `apt-get` on macOS](https://blog.csdn.net/camlot_/article/details/47424671)
+* [fink mimic `apt`,     `apt-get` on macOS](https://blog.csdn.net/camlot_/article/details/47424671)
 * brew based on ruby(macOS自帶)
 * apt(advance package tool) for debian-based linux kernel
 
@@ -372,6 +361,27 @@ https://www.itread01.com/content/1541720962.html
 |ctrl + U|從光標刪除到字首|
 |ctrl + k|從光標刪除到字尾|
 |ctrl + XX|在命令列首和光標之間移動|
+
+# 找檔案
+
+|命令|使用場景|備註|
+|---|-------|---|
+|locate|找檔案|幾分鐘，幾個小時前的會找不到，located會找到很多，會搜尋整個檔案系統，搜尋的db一天更新一次|
+|whereis|找二進位檔，回傳兩個結果，二進位檔以及操作手冊位置|不會回傳所有帶有關鍵字的檔案，不會很雜，但是重點是要知道你要找的是二進位檔|
+|which|一樣找二進位檔，只是會在PATH variable中尋找||
+|find|最萬用的進階搜尋|如果不知道搜尋根目錄的話，會挺慢的，要等一會|
+
+`find path -type f/d -name "xxx.sh"` , 支援萬用字元和正則表達式
+
+e.g. 
+
+1. 找當下資料夾內有沒有`.so`檔案(Recursively)
+
+ `find . -name "*.so"`
+
+2. 找系統內有沒有叫做`etc`的資料夾
+
+ `find / -type d -name "etc"`
 
 # 批量檔案修改
 
