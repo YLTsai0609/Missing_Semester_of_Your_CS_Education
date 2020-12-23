@@ -121,6 +121,19 @@ First command successed
 
 ```
 
+# Shell Wildcard
+
+wildcard一般翻譯程通配符，通用符號，和正則表達式的匹配很像，但是更簡便 
+
+| symbol | meaning     | example                         |
+|--------|-------------|---------------------------------|
+| `*` | all matches | `ls *.py` <br> list all .py file |
+| `?` | single character | `ls project?` <br> list project1, project2, projectq, ... |
+| `{}` | including | 1. `ls *.{py,sh}` <br> list all .py and *.sh file <br> 2. touch{1, 2, 3, 4, 5}.py <br> touch 1.py, 2.py, ... 5.py|
+| `..` | chracter ranger | touch{foo, bar}/{a..j} <br> touch foo/a foo/b, ...foo/j and bar/a, bar/b, ... boo/j|
+
+[更多的wildcard](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm)
+
 ## Example Script
 
 1. 一隻會查找給予的檔案(arguments)中有沒有包含`foobar`，沒有就會加進去到檔案最後一行的一隻script
@@ -146,68 +159,119 @@ done
 
 5. 各種test 可以`man test`，在上面的script中是 `-ne` 表示 `!=`，test要用雙中括號包起來，例如`[[$? -ne 0]]`
 
-6. shell globbing，很類似正則表達式的匹配，但是更方便
+6. 子進程與父進程，參考鳥哥，比較清楚，script中的要進到父進程的話，要export
 
-   Wildcard - `ls *.py` , `rm foo*`
+7. 第一行的直譯器位置，叫做shebang，像是
 
-   Curly braces `{}` - 表示或, `ls *.{py,sh}`
+    腳本的第一行 : `#!/usr/bin/env python.`
+
+    有趣的地方是，你可以用一個用shell來執行.py檔案，shell會在檔案第一行找到用哪個直譯器去找該檔案
+
+    透過這個邏輯你可以設定成你希望他跑的虛擬環境直譯器
+    這使得檔案更容易攜帶與協作，能夠在不同機器，不同環境中運作
+
+8. shell debugging
+
+    當然你可以在vscode裡面找到shell的debuger
+    然而也有其他工具可以幫助你，例如
+
+    [shellcheck online](https://www.shellcheck.net/)
+
+    [shellcheck github](https://github.com/koalaman/shellcheck)
+
+    or just type : `brew install shellcheck`
+
+## Finding What You Want
+
+### Finding command quickly
+
+tldr : 別上網google查command了，tldr幫你整理好直接查，tldr意思是(too long don't read)
 
 ``` 
 
-[19:16](https://www.youtube.com/watch?v=kgII-YWo3Zw&feature=emb_logo)
+(base) YuLong@MacBook-Pro:~/Desktop$ tldr ffmpeg
 
-convert image.{png,jpg}
-# Will expand to
-convert image.png image.jpg
+ffmpeg
 
-cp /path/to/project/{foo,bar,baz}.sh /newpath
-# Will expand to
-cp /path/to/project/foo.sh /path/to/project/bar.sh /path/to/project/baz.sh /newpath
+Video conversion tool.
+More information: <https://ffmpeg.org>.
 
-# Globbing techniques can also be combined
-mv *{.py,.sh} folder
-# Will move all *.py and *.sh files
+* Extract the sound from a video and save it as MP3:
 
-mkdir foo bar
-# This creates files foo/a, foo/b, ... foo/h, bar/a, bar/b, ... bar/h
-touch {foo,bar}/{a..j}
-touch foo/x bar/y
-# Show differences between files in foo and bar
-diff <(ls foo) <(ls bar)
-# Outputs
-# < x
-# ---
-# > y
+    ffmpeg -i video.mp4 -vn sound.mp3
 
+* Convert frames from a video or GIF into individual numbered images:
+
+    ffmpeg -i video.mpg|video.gif frame_%d.png
+
+* Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:
+
+    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif
+
+* Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:
+
+    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png
+
+* Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):
+
+    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4
+
+* Convert AVI video to MP4. AAC Audio @ 128kbit, h264 Video @ CRF 23:
+
+    ffmpeg -i input_video.avi -codec:audio aac -b:audio 128k -codec:video libx264 -crf 23 output_video.mp4
+
+* Remux MKV video to MP4 without re-encoding audio or video streams:
+
+    ffmpeg -i input_video.mkv -codec copy output_video.mp4
+
+* Convert MP4 video to VP9 codec. For the best quality, use a CRF value (recommended range 15-35) and -b:video MUST be 0:
+
+    ffmpeg -i input_video.mp4 -codec:video libvpx-vp9 -crf 30 -b:video 0 -codec:audio libopus -vbr on -threads number_of_threads output_video.webm    
 ```
 
-7. 子進程與父進程，參考鳥哥，比較清楚，script中的要進到父進程的話，要export
-8. 第一行的直譯器位置，叫做shebang，像是``
+看起來蠻有用的，但有時候可能裡面沒有還是要google就是了....
 
- `#!/usr/bin/env python.`
+但有些好處，比如說筆者自己對find, rename其實不算很熟，但每次找東西重新google或是重新翻筆記又很煩，這時候就可以
 
-# Shell Tools
+tldr rename
 
-## 如何使用command?
+tdlr find
 
-  + command --help
-  + man --help
-  + stackoverflow
+tdlr docker(好實用!!!)
 
-## 檔案查找
+tdlr brew(好實用!!!)
 
-* `find` 超級實用，以下給出幾個例子
+tdlr tar(好實用!!!)
+
+tdlr zip(好實用!!!)
+
+## finding file/folder quickly
+
+當然你可以一直ls，一直ls，grep，找到你要的，再繼續ls下去，但是有時候你要從整個系統知道某個資料夾或是某個檔案到底安裝到哪裡去了，怎麼辦呢?
+
+`find` and `fd`
+
+現學現賣，馬上先
+
+ `tdlr find`
 
 ``` 
 
-# Find all directories named src
-find . -name src -type d
-# Find all python files that have a folder named test in their path
-find . -path '**/test/**/*.py' -type f
-# Find all files modified in the last day
-find . -mtime -1
-# Find all zip files with size in range 500k to 10M
-find . -size +500k -size -10M -name '*.tar.gz'
+* Find files by extension:
+
+    find root_path -name '*.ext'
+
+* Find files by matching multiple patterns:
+
+    find root_path -name '*pattern_1*' -or -name '*pattern_2*'
+
+* Find directories matching a given name, in case-insensitive mode:
+
+    find root_path -type d -iname '*lib*'
+
+* Find files matching a path pattern:
+
+    find root_path -path '**/lib/**/*.ext'
 
 ```
 
@@ -216,41 +280,55 @@ find . -size +500k -size -10M -name '*.tar.gz'
 ``` 
 
 # Delete all files with .tmp extension
-find . -name '*.tmp' -exec rm {} \;
+
+find . -name '*.tmp' -exec rm {} \; 
+
 # Find all PNG files and convert them to JPG
-find . -name '*.png' -exec convert {} {.}.jpg \;
+
+find . -name '*.png' -exec convert {} {.}.jpg \; 
 
 ```
 
 * 通常都會使用pattern，就是上面的Globbing，所以可以多了解這個部分
 * `fd`是一個比`find`更使用者友善的指令集，像是他的ouptut會有顏色，預設只用正則表達式，support unicode(可以搜尋中文)，以及其他指令更為直覺等
 * 大部分的會同意`find`以及`fd`是好東西，但是他們有時候效能不太好，這時候可以查一下`locate`的使用，`locate`，關於`locate`的更多解釋可以看[這裡](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)
+* `located`更像是database會根據index來找東西，通常可以找得更快，如果你find/fd用的不順找得很慢，那你可能會想試試看located
 
-## 程式碼查找
+## The content of the file
+
+`grep` and `rg`
 
 * `grep`可以幫助你這個忙，在`data wrangling`我們會講更多
 
-* `grep`非常多才多藝(versatile)，講師常用的包含參數包含`-c`(算有幾個)，`-v`沒有match pattern的(inverting match)，`-R`，不只在當層，還往更深處找(Recursively)
+例如 : 
 
-https://missing.csail.mit.edu/2020/shell-tools/
+1. grep foobar mcd.sh - 在mcd.sh中找到foobar然後列出來
+2. grep -R foo . - 在現在所在的資料夾找所有檔案，看看有裡面內容有沒有foo，有就列出來
+3. 當然你可以看一下懶人包 `tldr grep`
 
-* `grep -R`可以用非常多方式改進，像是排除`.git`，多cpu查找等
-
-* 以下指令需要下載一些新的指令集，像是`ack`,    `ag`,  `rg`，這些指令集都非常好用，有需要的話可以使用
+自己在terminal上測試的話可以感覺得到grep沒有空行，沒有顏色，不算很好用，因此有了 `rg` ，rg可以視為更快速，更易閱讀的grep
 
 ``` 
 
 # Find all python files where I used the requests library
+
 rg -t py 'import requests'
+
 # Find all files (including hidden files) without a shebang line
+
 rg -u --files-without-match "^#!"
+
 # Find all matches of foo and print the following 5 lines
+
 rg foo -A 5
+
 # Print statistics of matches (# of matched lines and files )
+
 rg --stats PATTERN
+
 ```
 
-## 找尋shell commands
+## Finding your old command
 
 * `histroy`
 
@@ -259,11 +337,14 @@ rg --stats PATTERN
 * 另一個很酷的東西，講師自己非常喜歡的則是`history-based autosuggestions`，首先介紹一下[`fish`](https://fishshell.com/) shell, [fish-shell github](https://github.com/fish-shell/fish-shell)，這個東西可以在你的[zsh](https://asciinema.org/a/37390)中
 * 其中一點要注意的是，這樣的工具會紀錄你輸入過的東西，所以像是一些敏感資訊，要把它們拿掉，這可以從`.bash_history`或是`.zhistory`中調整
 
-## 資料夾導航
+## Folder Navigation
 
-* 可以透過`ln -s`，快速連結到某個資料夾，但是必須在該檔案中設定一個檔案，並對其更改權限
-* 直接列出資料夾結構 `tree`, `broot`
-* 非常優秀的檔案管理`nnn`,   `ranfger`
+* `ls -R` - 最古老可用
+* `tree` - 直接列出來
+* `broot` - 視覺化，類GUI，但又可以快速搜尋(推)
+* `nnn` - 也是視覺化，類GUI，可以玩玩看
+
+<img src='./images/L2_1.png'></img>
 
 ## Exercise
 
@@ -272,7 +353,7 @@ rg --stats PATTERN
 * https://missing.csail.mit.edu/2020/shell-tools/
 1. `man ls`，然後用`ls`做到以下事情
   + Q : 列出檔案，包含隱藏的 
-  + A : `ls -a`,                                  `ls -A`
+  + A : `ls -a`,                                                                             `ls -A`
   + Q : 包含檔案大小資訊，人獨得懂的
   + A : `ls -lh`
   + Q : 列出所有檔案(包含隱藏檔案)，但是是按照新舊順序排序
@@ -280,9 +361,9 @@ rg --stats PATTERN
   + A2 : bouns `ls -altr` : 加上反排序 `-r` : `reverse`
   + A3 : bonus man很長，關鍵是sort, 所以可以 `man ls | grep sort`來查找相關命令
   + Q : 讓輸出有顏色
-  + A : `ls -aG`，但是如果預設你的`.bashrc`,                                  `.bash_profile`ˇ經有設置，可能就沒差
+  + A : `ls -aG`，但是如果預設你的`.bashrc`,                                                                             `.bash_profile`ˇ經有設置，可能就沒差
 
-2. 寫兩個bash function,                                  `marco` and `polo`
+2. 寫兩個bash function,                                                                             `marco` and `polo`
 
    1. 執行 `marco` 時，會將當前的工作路徑存在某個地方
    2. 執行 `polo` 時，不管輸入什麼工作路徑，都要進入到 `marco` 儲存的工作路徑
@@ -301,7 +382,10 @@ rg --stats PATTERN
     polo () {
     cd $curr_dir
     }
-   ```
+
+   
+
+```
 
    A2 : Hint 把test.sh source到父進程可以快速debug，terminal重開變數就會清掉了
 
@@ -315,7 +399,7 @@ rg --stats PATTERN
 
     #! /bin/bash
     # 此file會測試某個script，200次，並將output以及錯誤訊息寫到當前目錄中的curr.out
-    for i in `seq 1 200`;
+    for i in `seq 1 200` ;
     do
         # 把參數的file跑起來，stdout以覆蓋模式存在curr.out，stderr已覆蓋模式存在curr.err
         bash $1 > curr.out 2> curr.err 
