@@ -235,15 +235,15 @@ More information: <https://ffmpeg.org>.
 
 tldr rename
 
-tdlr find
+tldr find
 
-tdlr docker(好實用!!!)
+tldr docker(好實用!!!)
 
-tdlr brew(好實用!!!)
+tldr brew(好實用!!!)
 
-tdlr tar(好實用!!!)
+tldr tar(好實用!!!)
 
-tdlr zip(好實用!!!)
+tldr zip(好實用!!!)
 
 ## finding file/folder quickly
 
@@ -253,7 +253,7 @@ tdlr zip(好實用!!!)
 
 現學現賣，馬上先
 
- `tdlr find`
+ `tldr find`
 
 ``` 
 
@@ -346,6 +346,15 @@ rg --stats PATTERN
 
 <img src='./images/L2_1.png'></img>
 
+## Summary of Good Shell Tools
+
+| tool  | usage                  | note |
+|-------|------------------------|------|
+| tldr  | faster tool cheatsheet |      |
+| fd    | faster find            |      |
+| broot | faster , prettier tree |      |
+| rg    | readable grep          |      |
+
 ## Exercise
 
 * took 90 mins
@@ -353,7 +362,7 @@ rg --stats PATTERN
 * https://missing.csail.mit.edu/2020/shell-tools/
 1. `man ls`，然後用`ls`做到以下事情
   + Q : 列出檔案，包含隱藏的 
-  + A : `ls -a`,                                                                             `ls -A`
+  + A : `ls -a`,                                                                               `ls -A`
   + Q : 包含檔案大小資訊，人獨得懂的
   + A : `ls -lh`
   + Q : 列出所有檔案(包含隱藏檔案)，但是是按照新舊順序排序
@@ -361,9 +370,9 @@ rg --stats PATTERN
   + A2 : bouns `ls -altr` : 加上反排序 `-r` : `reverse`
   + A3 : bonus man很長，關鍵是sort, 所以可以 `man ls | grep sort`來查找相關命令
   + Q : 讓輸出有顏色
-  + A : `ls -aG`，但是如果預設你的`.bashrc`,                                                                             `.bash_profile`ˇ經有設置，可能就沒差
+  + A : `ls -aG`，但是如果預設你的`.bashrc`,                                                                               `.bash_profile`ˇ經有設置，可能就沒差
 
-2. 寫兩個bash function,                                                                             `marco` and `polo`
+2. 寫兩個bash function,                                                                               `marco` and `polo`
 
    1. 執行 `marco` 時，會將當前的工作路徑存在某個地方
    2. 執行 `polo` 時，不管輸入什麼工作路徑，都要進入到 `marco` 儲存的工作路徑
