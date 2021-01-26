@@ -1,11 +1,14 @@
 # The Missing Semester of Your CS Education
 
-* [Check the WebPage](https://missing.csail.mit.edu/?fbclid=IwAR2qc-p56sO7I4XDE3Bmc09TLEZ0lWvDrrOOHWkTPWbfqD0X5KsXghuiXz4)
+MIT(麻省理工學院)短期課程，轉職CS必修課!
 
-* MIT(麻省理工學院)短期課程，轉職CS必修課!
-* [連載Blog from someone](https://blog.gslin.org/archives/2020/02/15/9408/mit-%E7%9A%84%E3%80%8Cthe-missing-semester-of-your-cs-education%E3%80%8D/)
-* [知名Facebook粉專 - Learning By Hacking轉發，170+分享](https://www.facebook.com/datasci.info/photos/a.379757428885161/1217568378437391/?type=3&theater)
-* 來自Hacker News上的網友回應:
+[WebPage -en](https://missing.csail.mit.edu/?fbclid=IwAR2qc-p56sO7I4XDE3Bmc09TLEZ0lWvDrrOOHWkTPWbfqD0X5KsXghuiXz4)
+
+[WebPage - zhtw](https://missing-semester-zh-hant.github.io/)
+
+[知名Facebook粉專 - Learning By Hacking轉發，170+分享](https://www.facebook.com/datasci.info/photos/a.379757428885161/1217568378437391/?type=3&theater)
+
+來自Hacker News上的網友回應:
 
 ``` 
 
@@ -21,19 +24,17 @@ It’s always good to have optional courses for various topics of interest. _Req
 
 # Schedule
 
-| Section | Compelete | Note  |
-|---------|-----------|-------|
-| 1 Course overview + the shell  | 12/13, 20     |  |
-|2  Shell Tools and Scripting      |12/13, 20      ||
-|3 1/15: Editors (Vim)|12/13, 20||
-|4 1/16: Data Wrangling|12/13, 20||
-|5 1/21: Command-line Environment |12/13, 20||
-|6 1/22: Version Control (Git)|12/13, 20|
-|7 1/23: Debugging and Profiling |||
-|8 1/27: Metaprogramming|||
-|9 1/28: Security and Cryptography|||
-|10 1/29: Potpourri|||
-|1/30: Q&A|||
+1. [x] Course overview + the shell  
+2. [x] Shell Tools and Scripting
+3. [x] Editors (Vim)
+4. [x] Data Wrangling
+5. [x] Command-line Environment
+6. [ ] Version Control (Git)
+7. [ ] Debugging and Profiling
+8. [ ] Metaprogramming
+9. [ ] Security and Cryptography
+10. [x] Potpourri
+11. [x] Q&A
 
 # Why we are teaching this class
 
@@ -71,17 +72,17 @@ These topics are not taught as part of the university curriculum: students are n
 
 ## Handy Linux conmmand and concepts
 
-Incliuding:
+in `additional/handy_linux_command/`
 
-[handy_linux_command](additional/handy_linux_command.md)
+Incliuding:
 
 1. Network(ifconfig, socket, ping, nmap, scp, curl, fix ip and floating ip, loopback ip, iwconfig, dns, ssh)
 2. backup, packing, unpacking(dd, gzip, zip, unzip, tar)
 3. shell script(why we need shell script, if else, variables, env vsariables)
-04. alias unaluas
-05. history
+04.   alias unaluas
+05.   history
 6. wildcard(bash萬用字元，和regax有點像)
-07. pipe, cut, grep
+07.   pipe, cut, grep
 8. data redirection(stdout, stderr, stdin, tee, :, &&)
 9. job control(nohup, ctrl + z, bg, fg, kill, wait)
 10. file profiling(cat, less, head, tail, echo)
