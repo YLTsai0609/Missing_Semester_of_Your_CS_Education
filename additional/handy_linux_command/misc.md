@@ -145,9 +145,9 @@ echo "I don't know what your choice is" && exit 0
 
 其實這個管線命令，**僅能處理經由前面一個指令傳來得正確資訊，也就是 standard output，對於 standard error並沒有直接處理的能力**
 
-<img src = './images/bash_pipe_1.png'></img>
+<img src = '../images/bash_pipe_1.png'></img>
 
-* 在每個管線後面接的第一個資料必定是**命令**才行，例如 `less` `more` `head` `tail` 等都是可以接受 standrar input，至於`ls`,     `cp`,     `mv`就不是管線命令了，因為後面這3個命令並不會接受 stdin的資料
+* 在每個管線後面接的第一個資料必定是**命令**才行，例如 `less` `more` `head` `tail` 等都是可以接受 standrar input，至於`ls`,         `cp`,         `mv`就不是管線命令了，因為後面這3個命令並不會接受 stdin的資料
 * 管線命令僅會處理 standard output，對於 standard error output 會予以忽略
 * 管線命令必須要能夠接受來自前一個指令的資料成為 standard input 繼續處理才行。
 
@@ -201,7 +201,7 @@ grep --corlor=auto 'MANPATH' /etc/man_db.conf
 * [鳥哥 第十章 10.5 資料流重定向](http://linux.vbird.org/linux_basic/0320bash.php)
 * 什麼是資料流重定向? : 把資料傳導到其他地方去，也就是不從顯示在terminal, 可以傳到檔案裡面, 或是印表機, 等等
 
-<img src = './images/bash_dataflow_redirection_1.png'></img>
+<img src = '../images/bash_dataflow_redirection_1.png'></img>
 
 ## stdout, stderr
 
@@ -285,6 +285,15 @@ linux命令是由左至右的，所以 `&&` 和 `||` 的位置不要放反喔!
 |echo|叫一段文字、或是叫一個檔案、叫環境變數|怎麼叫環境變數? echo $PATH|
 |tocuh|叫一個檔案，或是創建一個檔案||
 
+## folder profiling
+
+|命令|使用場景|備註|
+|---|-------|---|
+| `ls` |隨時，想看什麼資料夾就看什麼資料夾|
+| `tree` |產生樹狀結構，講解當前檔案結構狀況時非常好用|
+| `du` |檢查各個資料夾裡面有多大的檔案時很好用，特別是上傳github的時候| `du -h | sort -h` 列出檔案大小並排序，且以人類看得懂的方式呈現
+| `broot` |目前使用到最好用的檔案系統導航工具|需要安裝，Mac用 `brew` ，Ubnutu需要compiling
+
 # System profiling
 
 |命令|使用場景|備註|
@@ -299,7 +308,7 @@ linux命令是由左至右的，所以 `&&` 和 `||` 的位置不要放反喔!
 
 [htop使用](https://blog.gtwang.org/linux/linux-htop-interactive-process-viewer-tutorial/)
 
-* 什麼是`swap` : 硬體加速，當記憶體滿載時，會從硬碟中借一些容量拿充當記憶體，常用的話，很傷記憶體
+什麼是 `swap` ? : 硬體加速，當記憶體滿載時，會從硬碟中借一些容量拿充當記憶體，常用的話，很傷記憶體
 
 # 軟體管理
 
@@ -310,13 +319,13 @@ linux命令是由左至右的，所以 `&&` 和 `||` 的位置不要放反喔!
 |?|curl|curl有Library的版本，程式可以利用curl當作HTTP Client使用，支援比較多網路協定，支援的作業系統比wget多|
 |?|wget|最方便的一點，wget可以遞迴下載檔案，把子資料夾跟子子資料夾都下載，wget較為直覺|
 
-* [fink mimic `apt`,     `apt-get` on macOS](https://blog.csdn.net/camlot_/article/details/47424671)
+* [fink mimic `apt`,         `apt-get` on macOS](https://blog.csdn.net/camlot_/article/details/47424671)
 * brew based on ruby(macOS自帶)
 * apt(advance package tool) for debian-based linux kernel
 
 # 檔案系統
 
-<img src = './images/bash_file.png'></img>
+<img src = '../images/bash_file.png'></img>
 
 * Mac也長得很相似
 
