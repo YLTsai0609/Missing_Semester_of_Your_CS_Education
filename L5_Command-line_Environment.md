@@ -13,6 +13,7 @@
 `nohup` : 丟到背景而且把stdout寫到nohup.out，可以被重定向
 
 ``` 
+
 $ sleep 1000
 ^Z
 [1]  + 18653 suspended  sleep 1000
@@ -64,6 +65,7 @@ $ jobs
 # 別稱(Aliases)
 
 ``` 
+
 # Make shorthands for common flags
 alias ll="ls -lh"
 
@@ -113,6 +115,7 @@ tmux : `~/.tmux.conf`
 4. 可以根據機器來客製化
 
 ``` 
+
    if [[ "$(uname)" == "Linux" ]]; then {do_something}; fi
 
 # Check before using shell-specific features
@@ -143,6 +146,7 @@ ssh key放在 `~/.ssh/id_rsa`
  `vi ~/.ssh/config`
 
 ``` 
+
 # Read more about SSH config files: https://linux.die.net/man/5/ssh_config
 
 Host vm2_yltsai
@@ -194,6 +198,10 @@ Host WEJUMP-Nuke-Big
 
 * 原本你用的vscode就是從這裡來讀ssh config
 * 也可以直接用ssh讀取, 例如`ssh WEJUMP-RTX-2080`，就像是直接建立了一個別名
+
+### More about ssh
+
+[click me](https://github.com/YLTsai0609/cs50/blob/master/Additional/ssh.md)
 
 ## Port Forwarding
 

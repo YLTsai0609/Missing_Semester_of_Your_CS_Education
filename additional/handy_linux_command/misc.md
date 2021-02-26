@@ -147,7 +147,7 @@ echo "I don't know what your choice is" && exit 0
 
 <img src = '../images/bash_pipe_1.png'></img>
 
-* 在每個管線後面接的第一個資料必定是**命令**才行，例如 `less` `more` `head` `tail` 等都是可以接受 standrar input，至於`ls`,         `cp`,         `mv`就不是管線命令了，因為後面這3個命令並不會接受 stdin的資料
+* 在每個管線後面接的第一個資料必定是**命令**才行，例如 `less` `more` `head` `tail` 等都是可以接受 standrar input，至於`ls`,          `cp`,          `mv`就不是管線命令了，因為後面這3個命令並不會接受 stdin的資料
 * 管線命令僅會處理 standard output，對於 standard error output 會予以忽略
 * 管線命令必須要能夠接受來自前一個指令的資料成為 standard input 繼續處理才行。
 
@@ -319,7 +319,7 @@ linux命令是由左至右的，所以 `&&` 和 `||` 的位置不要放反喔!
 |?|curl|curl有Library的版本，程式可以利用curl當作HTTP Client使用，支援比較多網路協定，支援的作業系統比wget多|
 |?|wget|最方便的一點，wget可以遞迴下載檔案，把子資料夾跟子子資料夾都下載，wget較為直覺|
 
-* [fink mimic `apt`,         `apt-get` on macOS](https://blog.csdn.net/camlot_/article/details/47424671)
+* [fink mimic `apt`,          `apt-get` on macOS](https://blog.csdn.net/camlot_/article/details/47424671)
 * brew based on ruby(macOS自帶)
 * apt(advance package tool) for debian-based linux kernel
 

@@ -1,38 +1,54 @@
 # L4 Data Wrangling
 
-你曾經想要將資料從一個類型轉換成另一個不同的類型嗎? 你一定有的，而且這件事還非常常發生，這就是這堂課想要教的，這堂課會講特別多，不管是文字資料還是二進位資料!
+你曾經想要將資料從一個類型轉換成另一個不同的類型嗎? 你一定有的，而且這件事還非常常發生，這就是這堂課想要教的，這堂課會講特別多，不管是文字資料，圖片資料，還是二進位資料，當我們有一個任意的資料格式(log, text, image)，要整理成自己想要的樣子(圖表，按照檔案大小排序等)，我們就把它稱為data warangling.
 
 我們已經有做過一些簡單的資料整理，通常你有用到pipe `|` 的時候就是在做某些資料處理，不過這邊我們做更細節的介紹
+
+# `grep`
 
 我們馬上來看一個例子，我想知道誰登入了我的server，藉由觀看我server的log來得知
 
 ``` 
-ssh myserver journalctl | grep sshd
+
+ssh myserver journalctl | grep ssh
 ```
+
+`journalctl` 可以讓我們查到系統的log，尤其是那種很多人都可以登入進到server做事情的機器，你可能會產生這種需求來了解其他人在server上都在幹嘛
 
 其實你可以一直串連下去
 
 ``` 
+
 ssh myserver 'journalctl | grep sshd | grep "Disconnected from"' | less
 ```
 
 你也可以這麼做
 
 ``` 
+
 ls | grep "md" | grep "L4" | less
 ```
 
 你可能還是會遇到很多很阿雜的東西，那麼你可以這麼做
 
 ``` 
+
 ssh myserver journalctl
  | grep sshd
  | grep "Disconnected from"
  | sed 's/.*Disconnected from //'
 ```
 
+`grep` 也可以搭配正則表達式，例如每次 `ifconfig` 都找自己的ip找很久
+
+ `ifconfig | grep -E '([0-9]{1,3}\.?){4}'`
+
+即 ifconfig 並使用正則表達式 ([0-9]{1, 3}\.?)共找出4個，並grep出來
+
 # `sed`
+
 `sed` 指的是stream editor, 所以如果你想要更改檔案的話，除了直接對檔案做更改，你也可以使用 `sed`
+
 簡單的使用方式是這樣
 
 `sed 's/md/py/g'` : s -> 取代, 把md換成py, globally
@@ -50,7 +66,7 @@ ssh myserver journalctl
 * `[abc]` 任何match a, b, c的字元
 * `(abc)` 任何連著abc的字元
 * `(RX1|RX2)` 任何RX1 或是 RX2 match
-* `^` match 開頭 - 當我們需要compelete match時，通常會需要 `^` , `$`
+* `^` match 開頭 - 當我們需要compelete match時，通常會需要 `^` ,           `$`
 * `$` match 結尾
 * `()` group : match之後但想要保留，例如想知道有誰login server
 * **sed**中使用regax時，要將符號反轉譯，或是加上 `-E`
@@ -68,6 +84,7 @@ ssh myserver journalctl
 在這樣的使用下，可以從登入log中找出最常登入的user，這裡舉例檔案查找，隨便把一堆command疊在一起
 
 ``` 
+
 locate site-package | grep "python3.7" | sed -E 's/.*site-package//g' | sort | uniq -c | wc -l
 ```
 
@@ -98,6 +115,7 @@ locate site-package | grep "python3.7" | sed -E 's/.*site-package//g' | sort | u
 * 從video0裝置抓取frame，轉成灰階, 壓縮, 然後傳到遠端機器上
 
 ``` 
+
 ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
  | convert - -colorspace gray -
  | gzip
@@ -122,6 +140,7 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
 ### arithmetic operations
 
 ``` 
+
 $((expression))
 $(( n1+n2 ))
 $(( n1/n2 ))
