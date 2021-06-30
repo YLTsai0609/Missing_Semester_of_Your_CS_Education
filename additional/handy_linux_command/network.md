@@ -34,6 +34,18 @@ Support protocols : `DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LD
 |`curl -u myusername:mypassword http://example.com`|Pass a user name and password for server authentication|
 |`curl --request POST --url http://example.com/ -H 'Content-Type : application/json' -H 'x-authoriztion : xxxx' --data '[...]'`|Send data by post method with headers|
 
+### `http`
+
+|命令|意思|
+|---|----|
+|`http -d example.org`| download a url to a file|
+|`http -f example.org name='bob' profile_picture@'bob.png'`| Send form-encoded data|
+|`http example.org name='bob`|send json object|
+|`http HEAD example.org`|Specify an HTTP method|
+|`http example.org X-MyHeader:123`|Include an extra header|
+|`http -a username:password example.org`|Pass user name and password|
+|`cat data.txt | http PUT example.org`||
+|`http get url query:='{"match":{"author_id":"drm88"}}'`| get request from a url by query string.|
 
 ## 觀念
 
