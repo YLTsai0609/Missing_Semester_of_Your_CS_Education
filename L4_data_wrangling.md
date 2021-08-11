@@ -4,7 +4,9 @@
 
 我們已經有做過一些簡單的資料整理，通常你有用到pipe `|` 的時候就是在做某些資料處理，不過這邊我們做更細節的介紹
 
-# `grep`
+# Text
+
+## `grep`
 
 我們馬上來看一個例子，我想知道誰登入了我的server，藉由觀看我server的log來得知
 
@@ -45,7 +47,42 @@ ssh myserver journalctl
 
 即 ifconfig 並使用正則表達式 ([0-9]{1, 3}\.?)共找出4個，並grep出來
 
-# `sed`
+## `ag`
+
+`brew install ag`
+
+`ag` - 更強大，更好用，更直覺的 `grep`
+
+```
+
+  ag
+
+  The Silver Searcher. Like ack, but aims to be faster.
+  More information: https://github.com/ggreer/the_silver_searcher.
+
+  - Find files containing "foo", and print the line matches in context:
+    ag foo
+
+  - Find files containing "foo" in a specific directory:
+    ag foo path/to/directory
+
+  - Find files containing "foo", but only list the filenames:
+    ag -l foo
+
+  - Find files containing "FOO" case-insensitively, and print only the match, rather than the whole line:
+    ag -i -o FOO
+
+  - Find "foo" in files with a name matching "bar":
+    ag foo -G bar
+
+  - Find files whose contents match a regular expression:
+    ag '^ba(r|z)$'
+
+  - Find files with a name matching "foo":
+    ag -g foo
+```
+
+## `sed`
 
 `sed` 指的是stream editor, 所以如果你想要更改檔案的話，除了直接對檔案做更改，你也可以使用 `sed`
 
@@ -58,7 +95,7 @@ ssh myserver journalctl
 透過 `sed` 可以直接修改檔案內容，vim中也能夠使用，透過 `s` 來進行操作
 反轉譯，使用 `\\` ，例如 `\(ab\)` -> `(ab)`
 
-## Some popular Regular expressions
+### Some popular Regular expressions
 
 * `.` 任何單一字元，除了新的一列
 * `*` 0個或是多個match
@@ -74,7 +111,7 @@ ssh myserver journalctl
 * 關於regax有很多討論，像是怎麼抓email，或是確認質數等等，有很多用途
 * [這裡的整理甚至是處理了幾組有效的url應該會有隱樣的regax](https://mathiasbynens.be/demo/url-regex)
 
-## Other useful functionality (I)
+### Other useful functionality (I)
 
 * `wc` wourd count, 同樣也是非常的一個工具，拿來計算說資料有多少(可以計算字元數，行數，byte數等)
 * 當你需要計數時，在bash環境下，不要想迴圈，想到wc，會節省你一大堆時間
@@ -108,7 +145,49 @@ locate site-package | grep "python3.7" | sed -E 's/.*site-package//g' | sort | u
   + `for file in *.png; do convert $file -rotate 90 rotated-$file; done`
 * 同時也可以直接建立streamming `cat /dev/video0 ssh xxxxx`
 
-## working with binary data
+## JSON data(specialize text)
+
+json 格式的資料在企業中很常見，經常以一種資料交換的格式出現
+
+`jq` json processor 就是讓你在 terminal 中，做各種輕量的json處理，包含 access by key, asccess the eleement, ...
+
+`pip install jq`, `brew install jq`
+
+https://stedolan.github.io/jq/manual/#Invokingjq
+
+```
+  jq
+
+  A command-line JSON processor that uses a domain-specific language.
+  More information: https://stedolan.github.io/jq.
+
+  - Output a JSON file, in pretty-print format:
+    jq . file.json
+
+  - Output all elements from arrays (or all the values from objects) in a JSON file:
+    jq '.[]' file.json
+
+  - Read JSON objects from a file into an array, and output it (inverse of `jq .[]`):
+    jq --slurp . file.json
+
+  - Output the first element in a JSON file:
+    jq '.[0]' file.json
+
+  - Output the value of a given key of each element in a JSON text from stdin:
+    cat file.json | jq 'map(.key_name)'
+
+  - Output the value of multiple keys as a new JSON object (assuming the input JSON has the keys `key_name` and `other_key_name`):
+    cat file.json | jq '{my_new_key: .key_name, my_other_key: .other_key_name}'
+
+  - Combine multiple filters:
+    cat file.json | jq 'unique | sort | reverse'
+
+  - Output the value of a given key to a string (and disable JSON output):
+    cat file.json | jq --raw-output '"some text: \(.key_name)"'
+```
+
+
+## Binary data (image, sound, ...)
 
 * `ffmpeg` : encode and decode the video and operate on images
 
