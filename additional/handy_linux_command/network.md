@@ -19,6 +19,34 @@
 * [鳥哥一下 : [第11章、遠端連線伺服器 SSH/XDMCP/VNC/RDP]](http://linux.vbird.org/linux_server/0310telnetssh.php#scp)
 * [scp 簡明使用守則](http://note.drx.tw/2008/03/ubuntuscp-part1.html)
 
+## 指令
+
+### `curl`
+
+Support protocols : `DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET, TFTP`
+
+|命令|意思|
+|---|----|
+|`curl http://example.com -o filename`|download the contents of an URL to a file|
+|`curl -d 'name-bob' http://example.com/form` |send form-encoded data(POST request of type `application/x-www-form-urlencoded`)|
+|`curl -H 'X-My-Header: 123 -X PUT http://example.com'`|Send a request with an extra header, using a custom HTTP method|
+|`curl -d '{"name":"bob"}' -H 'Content-Type: application/json http://example.com/users/1234'`|Send data is JSON format, specifying the appropriate content-type header|
+|`curl -u myusername:mypassword http://example.com`|Pass a user name and password for server authentication|
+|`curl --request POST --url http://example.com/ -H 'Content-Type : application/json' -H 'x-authoriztion : xxxx' --data '[...]'`|Send data by post method with headers|
+
+### `http`
+
+|命令|意思|
+|---|----|
+|`http -d example.org`| download a url to a file|
+|`http -f example.org name='bob' profile_picture@'bob.png'`| Send form-encoded data|
+|`http example.org name='bob`|send json object|
+|`http HEAD example.org`|Specify an HTTP method|
+|`http example.org X-MyHeader:123`|Include an extra header|
+|`http -a username:password example.org`|Pass user name and password|
+|`cat data.txt | http PUT example.org`||
+|`http get url query:='{"match":{"author_id":"drm88"}}'`| get request from a url by query string.|
+
 ## 觀念
 
 ### 關於固定IP與浮動IP
